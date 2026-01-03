@@ -84,13 +84,22 @@ export default function HomePage() {
           <section className="py-24 lg:py-32 bg-background">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative aspect-[4/3] overflow-hidden bg-muted"
-                >
-                  <Image src="/SalonImages/salon1.png" alt="Stylehvn Salon Interior" fill className="object-cover" />
-                </motion.div>
+                <div className="grid grid-cols-2 gap-6">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative aspect-[3/4] overflow-hidden bg-muted rounded-lg"
+                  >
+                    <Image src="/SalonImages/IMG_7910.jpg" alt="Stylehvn Salon Interior" fill className="object-cover" />
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
+                    className="relative aspect-[3/4] overflow-hidden bg-muted rounded-lg mt-12"
+                  >
+                    <Image src="/SalonImages/IMG_7912.jpg" alt="Stylehvn Salon Details" fill className="object-cover" />
+                  </motion.div>
+                </div>
                 <div className="space-y-10">
                   <div className="space-y-6">
                     <h2>Crafting Beauty Through Precision</h2>

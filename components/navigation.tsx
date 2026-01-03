@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -29,14 +30,18 @@ export function Navigation() {
     <header className="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" onClick={scrollToTop} className="flex items-center space-x-2 group">
-            <motion.span
-              whileHover={{ letterSpacing: "0.1em" }}
-              transition={{ duration: 0.3 }}
-              className="text-xl font-light tracking-wider uppercase text-primary"
-            >
-              Stylehvn
-            </motion.span>
+          <Link href="/" onClick={scrollToTop} className="flex items-center gap-3 group">
+            <div className="relative w-14 h-14 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Stylehvn Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="text-xl font-light uppercase text-primary">
+              Stylehvn Unisex Salon
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,29 +85,77 @@ export function Navigation() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <nav className="flex flex-col space-y-6 mt-12">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "text-lg font-light transition-colors hover:text-primary",
-                        pathname === item.href ? "text-primary" : "text-foreground",
-                      )}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                  <Button
-                    asChild
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full mt-6"
+              <SheetContent side="right" className="w-[85vw] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-border/50">
+                <nav className="flex flex-col h-full">
+                  {/* Logo/Brand at top */}
+                  <motion.div
+                    className="pt-8 pb-12 border-b border-border/30 flex items-center gap-4"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
                   >
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>
-                      Book Appointment
-                    </Link>
-                  </Button>
+                    <div className="relative w-16 h-16 flex-shrink-0">
+                      <Image
+                        src="/logo.png"
+                        alt="Stylehvn Logo"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-2xl font-light tracking-wider uppercase text-primary">
+                      Stylehvn
+                    </span>
+                  </motion.div>
+
+                  {/* Navigation Links */}
+                  <div className="flex-1 flex flex-col justify-center space-y-2 py-8">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "block py-4 px-4 text-2xl font-light transition-all duration-300 rounded-lg",
+                            "hover:bg-accent/10 hover:text-primary hover:translate-x-2",
+                            pathname === item.href
+                              ? "text-primary bg-accent/5 translate-x-1"
+                              : "text-foreground"
+                          )}
+                        >
+                          {item.name}
+                          {pathname === item.href && (
+                            <motion.div
+                              layoutId="activeMobileNav"
+                              className="h-0.5 w-12 bg-accent mt-2"
+                              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                            />
+                          )}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* CTA Button at bottom */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                    className="pb-8"
+                  >
+                    <Button
+                      asChild
+                      className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full h-14 text-base font-medium shadow-lg"
+                    >
+                      <Link href="/contact" onClick={() => setIsOpen(false)}>
+                        Book Appointment
+                      </Link>
+                    </Button>
+                  </motion.div>
                 </nav>
               </SheetContent>
             </Sheet>

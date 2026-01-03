@@ -4,7 +4,7 @@ import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react"
 export function Footer() {
   const phoneNumber = "+919876543210"
   const email = "hello@stylehvn.com"
-  const instagramUrl = "https://instagram.com/stylehvn_official"
+  const instagramUrl = "https://www.instagram.com/_stylehvn_?igsh=MWIyMzJsdWk2NW9pdQ=="
   const facebookUrl = "https://facebook.com/stylehvn"
 
   return (
@@ -91,8 +91,8 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-sm font-medium uppercase tracking-wider text-foreground">Hours</h4>
             <div className="text-muted-foreground text-sm font-light space-y-2 leading-loose">
-              <p>Mon - Sat: 10:00 AM - 8:00 PM</p>
-              <p>Sunday: 11:00 AM - 7:00 PM</p>
+              <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+              <p>Sat & Sun: 7:00 PM - 9:00 PM</p>
             </div>
             <div className="flex items-center gap-6 pt-4">
               <a

@@ -4,6 +4,7 @@ import { Geist } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { MotionProvider } from "@/components/motion-provider"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { CursorSparkle } from "@/components/cursor-sparkle"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -51,6 +52,7 @@ export default function RootLayout({
         <MotionProvider>
           {children}
         </MotionProvider>
+        <CursorSparkle />
         <ScrollToTop />
         <Analytics />
       </body>

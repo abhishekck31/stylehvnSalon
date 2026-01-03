@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 
 export default function GalleryPage() {
-  const instagramUrl = "https://instagram.com/stylehvn_official"
+  const instagramUrl = "https://www.instagram.com/_stylehvn_?igsh=MWIyMzJsdWk2NW9pdQ=="
   const facebookUrl = "https://facebook.com/stylehvn"
   const pinterestUrl = "https://pinterest.com/stylehvn"
 
@@ -37,25 +37,21 @@ export default function GalleryPage() {
           <div className="container mx-auto px-6 lg:px-12">
             <StaggerContainer className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" staggerDelay={0.08}>
               {[
-                { h: "aspect-[4/5]", query: "luxury salon haircut precision" },
-                { h: "aspect-square", query: "premium salon interior design modern" },
-                { h: "aspect-[3/4]", query: "expert hair stylist working" },
-                { h: "aspect-[4/3]", query: "high-end salon products aesthetic" },
-                { h: "aspect-square", query: "modern male grooming ritual" },
-                { h: "aspect-[3/5]", query: "bridal makeup styling close-up" },
-                { h: "aspect-[4/5]", query: "salon wash area luxury" },
-                { h: "aspect-square", query: "creative hair color highlights" },
-                { h: "aspect-[3/4]", query: "salon lobby reception premium" },
+                { src: "/SalonImages/IMG_7910.jpg", aspect: "aspect-[4/5]", alt: "Stylehvn Salon Interior 1" },
+                { src: "/SalonImages/IMG_7912.jpg", aspect: "aspect-square", alt: "Stylehvn Salon Interior 2" },
+                { src: "/SalonImages/IMG_7914.jpg", aspect: "aspect-[3/4]", alt: "Stylehvn Salon Interior 3" },
+                { src: "/SalonImages/IMG_7915.jpg", aspect: "aspect-[4/3]", alt: "Stylehvn Salon Interior 4" },
+                { src: "/SalonImages/IMG_7916.jpg", aspect: "aspect-square", alt: "Stylehvn Salon Interior 5" },
               ].map((item, idx) => (
                 <StaggerItem key={idx}>
                   <motion.div
                     whileHover={{ scale: 1.03, y: -8 }}
                     transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                    className={`relative ${item.h} overflow-hidden bg-muted group break-inside-avoid cursor-pointer`}
+                    className={`relative ${item.aspect} overflow-hidden bg-muted group break-inside-avoid cursor-pointer`}
                   >
                     <Image
-                      src={`/gallery-placeholder-${idx}.jpg?height=800&width=600&query=${encodeURIComponent(item.query)}`}
-                      alt={`Gallery Image ${idx + 1}`}
+                      src={item.src}
+                      alt={item.alt}
                       fill
                       className="object-cover"
                     />
