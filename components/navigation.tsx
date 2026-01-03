@@ -31,7 +31,7 @@ export function Navigation() {
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" onClick={scrollToTop} className="flex items-center gap-3 group">
-            <div className="relative w-14 h-14 flex-shrink-0">
+            <div className="relative w-20 h-20 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Stylehvn Logo"
