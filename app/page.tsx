@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
@@ -10,9 +11,29 @@ import Link from "next/link"
 import Image from "next/image"
 
 export default function HomePage() {
+  const [currentReview, setCurrentReview] = useState(0)
+
   const whatsappNumber = "919876543210" // Replace with actual number
   const phoneNumber = "tel:+919876543210"
-  const instagramUrl = "https://instagram.com/stylehvn_official"
+  const instagramUrl = "https://www.instagram.com/_stylehvn_?igsh=MWIyMzJsdWk2NW9pdQ=="
+
+  const testimonials = [
+    {
+      name: "Ananya Sharma",
+      quote:
+        "The most professional salon experience I've ever had. The attention to detail is unmatched, and the atmosphere is truly luxurious.",
+    },
+    {
+      name: "Rahul Verma",
+      quote:
+        "Stylehvn redefined my grooming routine. Their stylists really understand modern male grooming without the generic barbershop feel.",
+    },
+    {
+      name: "Priya Mehta",
+      quote:
+        "Absolutely love the ambiance and the expertise. Every visit feels like a rejuvenating experience.",
+    },
+  ]
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -66,9 +87,9 @@ export default function HomePage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative aspect-[4/5] overflow-hidden bg-muted"
+                  className="relative aspect-[4/3] overflow-hidden bg-muted"
                 >
-                  <Image src="/luxury-salon-interior.png" alt="Stylehvn Salon Interior" fill className="object-cover" />
+                  <Image src="/SalonImages/salon1.png" alt="Stylehvn Salon Interior" fill className="object-cover" />
                 </motion.div>
                 <div className="space-y-10">
                   <div className="space-y-6">
@@ -160,41 +181,80 @@ export default function HomePage() {
         <ScrollReveal>
           <section className="py-24 lg:py-32 bg-background">
             <div className="container mx-auto px-6 lg:px-12">
-              <div className="max-w-5xl mx-auto">
-                <div className="mb-20">
-                  <h2 className="mb-6">Client Experiences</h2>
-                  <p className="text-body-lg text-muted-foreground">
-                    What our community says about their time at Stylehvn.
-                  </p>
+              <div className="max-w-6xl mx-auto">
+                <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                  <div>
+                    <h2 className="mb-4">Client Experiences</h2>
+                    <p className="text-body-lg text-muted-foreground">
+                      What our community says about their time at Stylehvn.
+                    </p>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  <div className="flex items-center gap-3">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setCurrentReview((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                      className="size-12 rounded-full border-2 border-border hover:border-foreground transition-colors flex items-center justify-center group"
+                      aria-label="Previous review"
+                    >
+                      <ArrowRight className="size-5 rotate-180 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setCurrentReview((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                      className="size-12 rounded-full border-2 border-border hover:border-foreground transition-colors flex items-center justify-center group"
+                      aria-label="Next review"
+                    >
+                      <ArrowRight className="size-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </motion.button>
+                  </div>
                 </div>
 
-                <StaggerContainer className="space-y-20" staggerDelay={0.2}>
-                  {[
-                    {
-                      name: "Ananya Sharma",
-                      quote:
-                        "The most professional salon experience I've ever had. The attention to detail is unmatched, and the atmosphere is truly luxurious.",
-                    },
-                    {
-                      name: "Rahul Verma",
-                      quote:
-                        "Stylehvn redefined my grooming routine. Their stylists really understand modern male grooming without the generic barbershop feel.",
-                    },
-                  ].map((testimonial, idx) => (
-                    <StaggerItem key={idx}>
-                      <div className="space-y-8 max-w-4xl">
-                        <p className="text-3xl lg:text-4xl text-foreground leading-relaxed">"{testimonial.quote}"</p>
-                        <div className="flex items-center gap-6">
-                          <div className="h-px w-16 bg-border" />
-                          <div className="space-y-1">
-                            <p className="font-medium text-lg">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">Verified Client</p>
+                {/* Carousel */}
+                <div className="relative overflow-hidden">
+                  <motion.div
+                    animate={{ x: `-${currentReview * 100}%` }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="flex"
+                  >
+                    {testimonials.map((testimonial, idx) => (
+                      <div key={idx} className="min-w-full px-2">
+                        <motion.div
+                          whileHover={{ y: -4 }}
+                          transition={{ duration: 0.3 }}
+                          className="bg-card rounded-2xl p-8 lg:p-12 shadow-lg hover:shadow-2xl transition-shadow border border-border/50 aspect-[6/1] flex flex-col justify-between"
+                        >
+                          <p className="text-xl lg:text-2xl text-foreground leading-relaxed">
+                            "{testimonial.quote}"
+                          </p>
+                          <div className="flex items-center gap-6 mt-8">
+                            <div className="h-px w-16 bg-border" />
+                            <div className="space-y-1">
+                              <p className="font-medium text-lg">{testimonial.name}</p>
+                              <p className="text-sm text-muted-foreground">Verified Client</p>
+                            </div>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
-                    </StaggerItem>
+                    ))}
+                  </motion.div>
+                </div>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center gap-2 mt-8">
+                  {testimonials.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentReview(idx)}
+                      className={`h-2 rounded-full transition-all ${idx === currentReview ? 'w-8 bg-foreground' : 'w-2 bg-border'
+                        }`}
+                      aria-label={`Go to review ${idx + 1}`}
+                    />
                   ))}
-                </StaggerContainer>
+                </div>
               </div>
             </div>
           </section>
@@ -206,7 +266,7 @@ export default function HomePage() {
             <div className="container mx-auto px-6 lg:px-12">
               <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
                 <div className="space-y-4">
-                  <h2>@stylehvn_official</h2>
+                  <h2>@_stylehvn_</h2>
                   <p className="text-body-lg text-muted-foreground">
                     Follow our journey and get inspired on Instagram.
                   </p>

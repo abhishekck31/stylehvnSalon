@@ -107,12 +107,12 @@ export default function ContactPage() {
                     <h2 className="text-3xl font-light tracking-tight">Salon Hours</h2>
                     <div className="space-y-5">
                       <div className="flex justify-between items-center py-3 border-b border-border/50">
-                        <span className="text-muted-foreground font-light">Monday - Saturday</span>
-                        <span className="font-light">10 AM - 8 PM</span>
+                        <span className="text-muted-foreground font-light">Monday - Friday</span>
+                        <span className="font-light">8 AM - 9 PM</span>
                       </div>
                       <div className="flex justify-between items-center py-3 border-b border-border/50">
-                        <span className="text-muted-foreground font-light">Sunday</span>
-                        <span className="font-light">11 AM - 7 PM</span>
+                        <span className="text-muted-foreground font-light">Saturday & Sunday</span>
+                        <span className="font-light">7 PM - 9 PM</span>
                       </div>
                     </div>
                   </div>
@@ -207,19 +207,30 @@ export default function ContactPage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <section className="h-[400px] bg-muted/30 relative">
-            <div className="absolute inset-0 flex items-center justify-center">
+          <section className="h-[500px] bg-muted/30 relative">
+            <div className="absolute inset-0 flex items-center justify-center w-full">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-center space-y-4"
+                className="text-center space-y-4 w-5xl"
               >
                 <MapPin className="size-10 text-muted-foreground mx-auto" />
-                <div>
+                <div className="space-y-6 w-full">
                   <p className="font-light text-lg">Find us in the heart of Style District</p>
-                  <p className="text-sm text-muted-foreground font-light">Google Maps Embed Placeholder</p>
+                  <div className="mt-6 rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9807326805408!2d77.56732317484372!3d13.100407087226959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae19000bc8ee37%3A0x8ff356f07ad3a93a!2sStylehvn%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1767452469911!5m2!1sen!2sin"
+                      width="100%"
+                      height="280"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>
