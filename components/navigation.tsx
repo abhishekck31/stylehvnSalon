@@ -30,8 +30,8 @@ export function Navigation() {
     <header className="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" onClick={scrollToTop} className="flex items-center gap-3 group">
-            <div className="relative w-20 h-20 flex-shrink-0">
+          <Link href="/" onClick={scrollToTop} className="flex items-center gap-2 md:gap-3 group">
+            <div className="relative w-12 h-12 md:w-20 md:h-20 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Stylehvn Logo"
@@ -39,7 +39,7 @@ export function Navigation() {
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-light uppercase text-primary">
+            <span className="text-sm md:text-xl font-light uppercase text-primary">
               Stylehvn Unisex Salon
             </span>
           </Link>

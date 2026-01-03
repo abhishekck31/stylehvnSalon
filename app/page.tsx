@@ -84,13 +84,13 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="grid grid-cols-2 gap-4 lg:gap-5 max-w-md mx-auto lg:mx-0"
+                className="grid grid-cols-2 gap-4 lg:gap-5 max-w-md mx-auto lg:mx-0 mt-12 lg:mt-0"
               >
                 {[
-                  { src: "/SalonImages/IMG_7910.jpg", alt: "Salon Interior 1", offset: "-mt-16" },
-                  { src: "/SalonImages/IMG_7912.jpg", alt: "Salon Interior 2", offset: "mt-0" },
-                  { src: "/SalonImages/IMG_7914.jpg", alt: "Salon Interior 3", offset: "-mt-18" },
-                  { src: "/SalonImages/IMG_7915.jpg", alt: "Salon Interior 4", offset: "-mt-2" },
+                  { src: "/SalonImages/IMG_7910.jpg", alt: "Salon Interior 1", offset: "lg:-mt-16" },
+                  { src: "/SalonImages/IMG_7912.jpg", alt: "Salon Interior 2", offset: "lg:mt-0" },
+                  { src: "/SalonImages/IMG_7914.jpg", alt: "Salon Interior 3", offset: "lg:-mt-18" },
+                  { src: "/SalonImages/IMG_7915.jpg", alt: "Salon Interior 4", offset: "lg:-mt-2" },
                 ].map((image, idx) => (
                   <motion.div
                     key={idx}
