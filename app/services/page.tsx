@@ -10,47 +10,47 @@ import Link from "next/link"
 
 const serviceCategories = [
   {
-    id: "hair",
+    id: "hair-design",
     name: "Hair Design & Styling",
     icon: Scissors,
     services: [
-      { name: "Luxury Precision Haircut", price: "₹1,200+", duration: "60 mins" },
-      { name: "Creative Color & Highlights", price: "₹3,500+", duration: "120 mins" },
-      { name: "Keratin Smooth Treatment", price: "₹5,000+", duration: "180 mins" },
-      { name: "Red Carpet Styling", price: "₹2,500+", duration: "90 mins" },
+      { name: "Haircut" },
+      { name: "Hairstyling" },
+      { name: "Blowdry" },
+      { name: "Shampoo & Conditioning" },
+      { name: "Children's Cuts" },
     ],
   },
   {
-    id: "grooming",
-    name: "Premium Grooming",
-    icon: UserCheck,
-    services: [
-      { name: "Royal Beard Sculpt", price: "₹600+", duration: "30 mins" },
-      { name: "Signature Hot Towel Shave", price: "₹800+", duration: "45 mins" },
-      { name: "Scalp Therapy Massage", price: "₹1,000+", duration: "45 mins" },
-      { name: "Men's Luxury Manicure", price: "₹1,200+", duration: "45 mins" },
-    ],
-  },
-  {
-    id: "skin",
-    name: "Skin & Aesthetics",
+    id: "hair-color",
+    name: "Color & Chemical",
     icon: Sparkles,
     services: [
-      { name: "Stylehvn Glow Facial", price: "₹2,500+", duration: "60 mins" },
-      { name: "Hydra-Radiance Treatment", price: "₹4,500+", duration: "90 mins" },
-      { name: "Detox Deep Cleanse", price: "₹1,800+", duration: "45 mins" },
-      { name: "Anti-Aging Gold Facial", price: "₹6,000+", duration: "120 mins" },
+      { name: "Hair Colouring" },
+      { name: "Balayage" },
+      { name: "Hair Highlighting" },
+      { name: "Hair Straightening" },
+      { name: "Keratin Treatments" },
+      { name: "Ombre Hair Colour" },
     ],
   },
   {
-    id: "premium",
-    name: "Bridal & Special Occasions",
+    id: "treatments",
+    name: "Specialized Care",
+    icon: UserCheck,
+    services: [
+      { name: "Hair Treatments" },
+      { name: "Curly Hair" },
+    ],
+  },
+  {
+    id: "other",
+    name: "Grooming & Special Occasions",
     icon: Heart,
     services: [
-      { name: "Bridal Styling Consultation", price: "₹1,500", duration: "60 mins" },
-      { name: "Premium Bridal Makeover", price: "₹15,000+", duration: "180 mins" },
-      { name: "Groom's Special Ritual", price: "₹5,500+", duration: "120 mins" },
-      { name: "Stylehvn Signature Package", price: "₹8,000+", duration: "240 mins" },
+      { name: "Body Waxing" },
+      { name: "Shaving" },
+      { name: "Bridal Services" },
     ],
   },
 ]
@@ -61,7 +61,7 @@ export default function ServicesPage() {
       <Navigation />
 
       <main className="flex-grow pt-20">
-        <header className="bg-background py-28 lg:py-32">
+        <header className="bg-background py-20 lg:py-24">
           <div className="container mx-auto px-6 lg:px-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -78,9 +78,9 @@ export default function ServicesPage() {
           </div>
         </header>
 
-        <section className="py-24 lg:py-32 bg-background">
+        <section className="py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-6 lg:px-12">
-            <div className="space-y-24">
+            <div className="space-y-16">
               {serviceCategories.map((category, catIdx) => (
                 <ScrollReveal key={category.id} delay={catIdx * 0.1}>
                   <div className="space-y-12">
@@ -99,10 +99,6 @@ export default function ServicesPage() {
                           >
                             <div className="space-y-3 flex-1">
                               <h3 className="text-2xl group-hover:text-foreground transition-colors">{service.name}</h3>
-                              <div className="flex items-center gap-8 text-base text-muted-foreground">
-                                <span>{service.duration}</span>
-                                <span>Starting from {service.price}</span>
-                              </div>
                             </div>
                           </motion.div>
                         </StaggerItem>
@@ -116,7 +112,7 @@ export default function ServicesPage() {
         </section>
 
         <ScrollReveal>
-          <section className="py-28 lg:py-36 bg-background">
+          <section className="py-20 lg:py-24 bg-background">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="max-w-5xl mx-auto text-center space-y-10">
                 <div className="space-y-6">

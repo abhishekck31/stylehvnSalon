@@ -43,37 +43,72 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-background py-28 lg:py-36">
           <div className="container mx-auto px-6 lg:px-12 relative z-10">
-            <div className="max-w-5xl space-y-10">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-foreground"
-              >
-                Unmistakably You.
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-body-lg text-muted-foreground max-w-3xl"
-              >
-                Confidence begins with precision—crafted by experts who understand nuance.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-12 h-14 text-base font-medium shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Link href="/contact">Book Now</Link>
-                  </Button>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              {/* Left: Text Content */}
+              <div className="max-w-3xl space-y-10">
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="text-foreground"
+                >
+                  Unmistakably You.
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="text-body-lg text-muted-foreground"
+                >
+                  Confidence begins with precision—crafted by experts who understand nuance.
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                    <Button
+                      asChild
+                      size="lg"
+                      className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-12 h-14 text-base font-medium shadow-lg hover:shadow-xl transition-shadow"
+                    >
+                      <Link href="/contact">Book Now</Link>
+                    </Button>
+                  </motion.div>
                 </motion.div>
+              </div>
+
+              {/* Right: 2x2 Grid of Images with Staggered Layout */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="grid grid-cols-2 gap-4 lg:gap-5 max-w-md mx-auto lg:mx-0"
+              >
+                {[
+                  { src: "/SalonImages/IMG_7910.jpg", alt: "Salon Interior 1", offset: "-mt-16" },
+                  { src: "/SalonImages/IMG_7912.jpg", alt: "Salon Interior 2", offset: "mt-0" },
+                  { src: "/SalonImages/IMG_7914.jpg", alt: "Salon Interior 3", offset: "-mt-18" },
+                  { src: "/SalonImages/IMG_7915.jpg", alt: "Salon Interior 4", offset: "-mt-2" },
+                ].map((image, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ scale: 1.1, zIndex: 10 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className={`relative aspect-square overflow-hidden rounded-2xl shadow-[0_8px_30px_rgb(59,130,246,0.3)] hover:shadow-[0_12px_40px_rgb(59,130,246,0.5)] transition-shadow duration-300 ${image.offset}`}
+                    style={{
+                      boxShadow: "0 8px 30px rgba(59, 130, 246, 0.3)",
+                    }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </motion.div>
+                ))}
               </motion.div>
             </div>
           </div>
